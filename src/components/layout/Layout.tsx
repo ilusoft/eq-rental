@@ -3,7 +3,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { Button } from '@/components/ui/button'
 
 export function Layout() {
-  const { isAuthenticated, profile, signOut, isOwner } = useAuth()
+  const { isAuthenticated, profile, signOut, isOwner, isSystemOwner } = useAuth()
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -18,6 +18,9 @@ export function Layout() {
                   <Link to="/my-bookings" className="text-sm hover:text-primary">My Bookings</Link>
                   {isOwner && (
                     <Link to="/owner/dashboard" className="text-sm hover:text-primary">Owner Dashboard</Link>
+                  )}
+                  {isSystemOwner && (
+                    <Link to="/admin" className="text-sm hover:text-primary">Admin</Link>
                   )}
                 </>
               )}

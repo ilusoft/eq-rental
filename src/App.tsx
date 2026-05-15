@@ -16,6 +16,10 @@ import { CheckoutPage } from '@/pages/owner/CheckoutPage'
 import { MyBookingsPage } from '@/pages/booking/MyBookingsPage'
 import { NewBookingPage } from '@/pages/booking/NewBookingPage'
 import { BookingDetailPage } from '@/pages/booking/BookingDetailPage'
+import { AdminDashboardPage } from '@/pages/admin/AdminDashboardPage'
+import { AdminEquipmentPage } from '@/pages/admin/AdminEquipmentPage'
+import { AdminUsersPage } from '@/pages/admin/AdminUsersPage'
+import { AdminBookingsPage } from '@/pages/admin/AdminBookingsPage'
 
 const queryClient = new QueryClient()
 
@@ -92,6 +96,38 @@ function App() {
                 element={
                   <ProtectedRoute requiredRole="owner">
                     <CheckoutPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin"
+                element={
+                  <ProtectedRoute requiredRole="system_owner">
+                    <AdminDashboardPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin/equipment"
+                element={
+                  <ProtectedRoute requiredRole="system_owner">
+                    <AdminEquipmentPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin/users"
+                element={
+                  <ProtectedRoute requiredRole="system_owner">
+                    <AdminUsersPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin/bookings"
+                element={
+                  <ProtectedRoute requiredRole="system_owner">
+                    <AdminBookingsPage />
                   </ProtectedRoute>
                 }
               />
