@@ -13,6 +13,9 @@ import { OwnerDashboardPage } from '@/pages/owner/OwnerDashboardPage'
 import { AddEquipmentPage } from '@/pages/owner/AddEquipmentPage'
 import { EditEquipmentPage } from '@/pages/owner/EditEquipmentPage'
 import { CheckoutPage } from '@/pages/owner/CheckoutPage'
+import { MyBookingsPage } from '@/pages/booking/MyBookingsPage'
+import { NewBookingPage } from '@/pages/booking/NewBookingPage'
+import { BookingDetailPage } from '@/pages/booking/BookingDetailPage'
 
 const queryClient = new QueryClient()
 
@@ -38,7 +41,23 @@ function App() {
                 path="my-bookings"
                 element={
                   <ProtectedRoute>
-                    <div className="p-8">My Bookings - Coming Soon</div>
+                    <MyBookingsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="booking/new"
+                element={
+                  <ProtectedRoute>
+                    <NewBookingPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="booking/:id"
+                element={
+                  <ProtectedRoute>
+                    <BookingDetailPage />
                   </ProtectedRoute>
                 }
               />
