@@ -9,6 +9,10 @@ import { RegisterPage } from '@/pages/auth/RegisterPage'
 import { ProfilePage } from '@/pages/ProfilePage'
 import { CatalogPage } from '@/pages/catalog/CatalogPage'
 import { EquipmentDetailPage } from '@/pages/catalog/EquipmentDetailPage'
+import { OwnerDashboardPage } from '@/pages/owner/OwnerDashboardPage'
+import { AddEquipmentPage } from '@/pages/owner/AddEquipmentPage'
+import { EditEquipmentPage } from '@/pages/owner/EditEquipmentPage'
+import { CheckoutPage } from '@/pages/owner/CheckoutPage'
 
 const queryClient = new QueryClient()
 
@@ -40,6 +44,38 @@ function App() {
               />
               <Route path="catalog" element={<CatalogPage />} />
               <Route path="equipment/:id" element={<EquipmentDetailPage />} />
+              <Route
+                path="owner/dashboard"
+                element={
+                  <ProtectedRoute requiredRole="owner">
+                    <OwnerDashboardPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="owner/add-equipment"
+                element={
+                  <ProtectedRoute requiredRole="owner">
+                    <AddEquipmentPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="owner/equipment/:id"
+                element={
+                  <ProtectedRoute requiredRole="owner">
+                    <EditEquipmentPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="owner/checkout/:bookingId"
+                element={
+                  <ProtectedRoute requiredRole="owner">
+                    <CheckoutPage />
+                  </ProtectedRoute>
+                }
+              />
             </Route>
           </Routes>
         </AuthProvider>

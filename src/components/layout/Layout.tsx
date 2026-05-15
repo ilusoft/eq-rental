@@ -3,7 +3,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { Button } from '@/components/ui/button'
 
 export function Layout() {
-  const { isAuthenticated, profile, signOut } = useAuth()
+  const { isAuthenticated, profile, signOut, isOwner } = useAuth()
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -14,7 +14,12 @@ export function Layout() {
             <nav className="flex gap-4">
               <Link to="/catalog" className="text-sm hover:text-primary">Catalog</Link>
               {isAuthenticated && (
-                <Link to="/my-bookings" className="text-sm hover:text-primary">My Bookings</Link>
+                <>
+                  <Link to="/my-bookings" className="text-sm hover:text-primary">My Bookings</Link>
+                  {isOwner && (
+                    <Link to="/owner/dashboard" className="text-sm hover:text-primary">Owner Dashboard</Link>
+                  )}
+                </>
               )}
             </nav>
           </div>
