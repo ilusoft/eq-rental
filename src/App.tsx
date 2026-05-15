@@ -7,6 +7,8 @@ import { HomePage } from '@/pages/HomePage'
 import { LoginPage } from '@/pages/auth/LoginPage'
 import { RegisterPage } from '@/pages/auth/RegisterPage'
 import { ProfilePage } from '@/pages/ProfilePage'
+import { CatalogPage } from '@/pages/catalog/CatalogPage'
+import { EquipmentDetailPage } from '@/pages/catalog/EquipmentDetailPage'
 
 const queryClient = new QueryClient()
 
@@ -36,7 +38,8 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="catalog" element={<div className="p-8">Catalog - Coming Soon</div>} />
+              <Route path="catalog" element={<CatalogPage />} />
+              <Route path="equipment/:id" element={<EquipmentDetailPage />} />
             </Route>
           </Routes>
         </AuthProvider>
